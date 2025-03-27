@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 24 96% 56%; /* coral: #FA7921 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 35 99% 56%; /* amber: #FE9920 */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 52 41% 51%; /* olive: #B9A44C */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 198 80% 23%; /* navy: #0C4767 */
+  --input: 198 80% 23%; /* navy: #0C4767 */
+  --ring: 24 96% 56%; /* coral: #FA7921 */
+  --radius: 0.5rem;
+
+  /* Custom colors */
+  --coral: 24 96% 56%; /* #FA7921 */
+  --coral-foreground: 0 0% 100%;
+  --amber: 35 99% 56%; /* #FE9920 */
+  --amber-foreground: 0 0% 100%;
+  --olive: 52 41% 51%; /* #B9A44C */
+  --olive-foreground: 0 0% 100%;
+  --forest: 93 29% 33%; /* #566E3D */
+  --forest-foreground: 0 0% 100%;
+  --navy: 198 80% 23%; /* #0C4767 */
+  --navy-foreground: 0 0% 100%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 24 96% 56%; /* coral: #FA7921 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 35 99% 56%; /* amber: #FE9920 */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 52 41% 51%; /* olive: #B9A44C */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 198 80% 23%; /* navy: #0C4767 */
+  --input: 198 80% 23%; /* navy: #0C4767 */
+  --ring: 24 96% 56%; /* coral: #FA7921 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Mid-century modern design elements */
+.mcm-box {
+  @apply rounded-md overflow-hidden transition-all duration-300;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.mcm-box:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.glow-box {
+  @apply relative;
+}
+
+.glow-box::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #fa7921, #fe9920);
+  z-index: -1;
+  border-radius: 0.6rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-box:hover::before {
+  opacity: 0.7;
+}
+
+/* Illuminated box styles */
+.illuminated-box {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.illuminated-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(250, 121, 33, 0.1), rgba(254, 153, 32, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.illuminated-box:hover::before {
+  opacity: 1;
+}
+
+.illuminated-box::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, rgba(250, 121, 33, 0.3), rgba(254, 153, 32, 0.3));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.illuminated-box:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced glow effect */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, rgba(250, 121, 33, 0.6), rgba(254, 153, 32, 0.6));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(8px);
+}
+
+.glow-effect:hover::before {
+  opacity: 0.7;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Add these styles to your globals.css file */
+
+.going-home-plus {
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+}
+
+.going-home-plus::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #0C4767, #FA7921);
+  opacity: 0.7;
+}
+
+.going-home-plus h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.going-home-plus h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #0C4767, #FA7921);
+}
+
+/* Button hover effect */
+.going-home-plus a[href^="#"] {
+  position: relative;
+  overflow: hidden;
+}
+
+.going-home-plus a[href^="#"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  transition: left 0.5s ease;
+}
+
+.going-home-plus a[href^="#"]:hover::before {
+  left: 100%;
+}
+
+/* Menu button hover effect */
+.going-home-plus button {
+  position: relative;
+  overflow: hidden;
+}
+
+.going-home-plus button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(12, 71, 103, 0.05), rgba(250, 121, 33, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.going-home-plus button:hover::after {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .going-home-plus h2::after {
+    width: 60px;
+  }
+}
+

@@ -1,0 +1,192 @@
+/* Geometric Patterns for Med-QUEST Website
+ * These patterns use the brand color palette and are designed to be subtle background elements
+ */
+
+/* Base pattern class */
+.pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pattern overlay - base styles */
+.pattern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15; /* Increased from 0.05 to 0.15 for better visibility */
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Content wrapper to ensure content stays above pattern */
+.pattern__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 
+ * Pattern Variations
+ * Each pattern is created using SVG backgrounds for better performance and scaling
+ */
+
+/* 1. Dotted Grid Pattern - subtle dots arranged in a grid */
+.pattern--dots::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="2" fill="%230C4767"/></svg>');
+  background-size: 20px 20px;
+}
+
+/* 2. Diagonal Lines Pattern - thin diagonal lines */
+.pattern--diagonal-lines::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M0,20 L20,0" stroke="%230C4767" stroke-width="1.5" fill="none"/></svg>');
+  background-size: 20px 20px;
+}
+
+/* 3. Triangles Pattern - small triangles arranged in a grid */
+.pattern--triangles::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M20,5 L35,30 L5,30 Z" fill="%23FA7921" fill-opacity="0.4"/></svg>');
+  background-size: 40px 40px;
+}
+
+/* 4. Squares Pattern - rotated squares creating a diamond grid */
+.pattern--squares::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><rect x="10" y="10" width="10" height="10" transform="rotate(45, 15, 15)" stroke="%23B9A44C" stroke-width="1.5" fill="none"/></svg>');
+  background-size: 30px 30px;
+}
+
+/* 5. Waves Pattern - subtle wave lines */
+.pattern--waves::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20"><path d="M0,10 Q25,20 50,10 Q75,0 100,10" stroke="%23566E3D" stroke-width="1.5" fill="none"/></svg>');
+  background-size: 100px 20px;
+}
+
+/* 6. Hexagons Pattern - honeycomb-like pattern */
+.pattern--hexagons::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M25,5 L45,17.5 L45,42.5 L25,55 L5,42.5 L5,17.5 Z" stroke="%23FE9920" stroke-width="1.5" fill="none"/></svg>');
+  background-size: 50px 50px;
+}
+
+/* 
+ * Color Variations
+ * Different color options for the patterns
+ */
+.pattern--navy::before {
+  filter: hue-rotate(0deg);
+}
+
+.pattern--coral::before {
+  filter: hue-rotate(60deg);
+}
+
+.pattern--amber::before {
+  filter: hue-rotate(120deg);
+}
+
+.pattern--olive::before {
+  filter: hue-rotate(180deg);
+}
+
+.pattern--forest::before {
+  filter: hue-rotate(240deg);
+}
+
+/* 
+ * Opacity Variations
+ * Control the subtlety of the patterns
+ */
+.pattern--subtle::before {
+  opacity: 0.1; /* Increased from 0.03 to 0.1 */
+}
+
+.pattern--medium::before {
+  opacity: 0.2; /* Increased from 0.07 to 0.2 */
+}
+
+.pattern--visible::before {
+  opacity: 0.3; /* Increased from 0.12 to 0.3 */
+}
+
+/* 
+ * Section-specific pattern adjustments
+ */
+
+/* Header pattern */
+.header-pattern::before {
+  background-size: 30px 30px;
+  opacity: 0.15; /* Increased from 0.04 to 0.15 */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="1.5" fill="%230C4767"/><circle cx="0" cy="0" r="1.5" fill="%230C4767"/><circle cx="0" cy="30" r="1.5" fill="%230C4767"/><circle cx="30" cy="0" r="1.5" fill="%230C4767"/><circle cx="30" cy="30" r="1.5" fill="%230C4767"/></svg>');
+}
+
+/* Hero banner pattern */
+.hero-pattern::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,100 M0,100 L100,0" stroke="%230C4767" stroke-width="1.5" stroke-opacity="0.5" fill="none"/></svg>');
+  background-size: 100px 100px;
+  opacity: 0.25; /* Increased from 0.1 to 0.25 */
+}
+
+/* Going Home Plus section pattern */
+.ghp-pattern::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><rect x="0" y="0" width="30" height="30" fill="%23FA7921" fill-opacity="0.15"/><rect x="30" y="30" width="30" height="30" fill="%23FA7921" fill-opacity="0.15"/></svg>');
+  background-size: 60px 60px;
+  opacity: 0.2; /* Increased from 0.06 to 0.2 */
+}
+
+/* Success stories section pattern */
+.success-pattern::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" stroke="%23B9A44C" stroke-width="1.5" fill="none"/></svg>');
+  background-size: 40px 40px;
+  opacity: 0.18; /* Increased from 0.05 to 0.18 */
+}
+
+/* Footer pattern */
+.footer-pattern::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M0,0 L20,20 M0,20 L20,0" stroke="%23FFFFFF" stroke-width="1" stroke-opacity="0.3" fill="none"/></svg>');
+  background-size: 20px 20px;
+  opacity: 0.2; /* Increased from 0.08 to 0.2 */
+}
+
+/* 
+ * Responsive adjustments
+ */
+@media (max-width: 768px) {
+  .pattern::before {
+    background-size: 50% 50%; /* Scale down patterns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .pattern::before {
+    opacity: 0.12; /* Increased from 0.04 to 0.12 for mobile */
+  }
+}
+
+/* 
+ * Reduced motion preference support
+ */
+@media (prefers-reduced-motion: reduce) {
+  .pattern--animated::before {
+    animation: none !important;
+  }
+}
+
+/* 
+ * Optional: Animated patterns
+ * Subtle animations for certain patterns
+ */
+.pattern--animated::before {
+  animation: patternShift 60s linear infinite;
+}
+
+@keyframes patternShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+

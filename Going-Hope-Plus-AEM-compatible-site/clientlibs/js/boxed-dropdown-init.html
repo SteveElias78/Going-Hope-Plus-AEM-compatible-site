@@ -1,0 +1,71 @@
+<script>
+  (function() {
+    // This function will be called once the DOM is fully loaded
+    function initializeDropdowns() {
+      var menuButtons = document.querySelectorAll(".cmp-going-home-plus__menu-button");
+      
+      if (menuButtons.length === 0) {
+        console.log("No menu buttons found, waiting...");
+        // Try again in 500ms if no buttons were found
+        setTimeout(initializeDropdowns, 500);
+        return;
+      }
+      
+      menuButtons.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+          event.preventDefault();
+          
+          var dropdownId = this.getAttribute("data-dropdown-id");
+          var dropdown = document.getElementById(dropdownId);
+          
+          if (!dropdown) {
+            console.error("Dropdown not found: " + dropdownId);
+            return;
+          }
+          
+          var isExpanded = this.getAttribute("aria-expanded") === "true";
+          
+          // Close all other dropdowns first
+          menuButtons.forEach(function(otherButton) {
+            if (otherButton !== button) {
+              otherButton.setAttribute("aria-expanded", "false");
+              var otherId = otherButton.getAttribute("data-dropdown-id");
+              var otherDropdown = document.getElementById(otherId);
+              if (otherDropdown) {
+                otherDropdown.setAttribute("aria-hidden", "true");
+              }
+            }
+          });
+          
+          // Toggle this dropdown
+          this.setAttribute("aria-expanded", !isExpanded);
+          dropdown.setAttribute("aria-hidden", isExpanded);
+        });
+      });
+      
+      // Close all dropdowns when clicking outside
+      document.addEventListener("click", function(event) {
+        if (!event.target.closest(".cmp-going-home-plus__menu-item")) {
+          menuButtons.forEach(function(button) {
+            button.setAttribute("aria-expanded", "false");
+            var dropdownId = button.getAttribute("data-dropdown-id");
+            var dropdown = document.getElementById(dropdownId);
+            if (dropdown) {
+              dropdown.setAttribute("aria-hidden", "true");
+            }
+          });
+        }
+      });
+      
+      console.log("Dropdown menus initialized successfully.");
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeDropdowns);
+    } else {
+      initializeDropdowns();
+    }
+  })();
+</script>
+
